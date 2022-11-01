@@ -1,7 +1,7 @@
 import { error } from "@sveltejs/kit";
-import type { PageLoad } from "./$types";
 
-export const load: PageLoad = async (props) => {
+/** @type {import('./$types').PageServerLoad} */
+export async function load(props: any) {
   try {
     const {
       params: { id },
@@ -14,7 +14,9 @@ export const load: PageLoad = async (props) => {
     const pokemon = await res.json();
 
     return { pokemon, data: JSON.stringify(props) };
-  } catch (e) {
-    throw error(404, "Not found");
+  } catch (e: any) {
+    throw error(404, e);
   }
-};
+
+  throw error(404, "Not found");
+}

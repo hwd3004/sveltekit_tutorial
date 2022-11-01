@@ -1,7 +1,7 @@
-<script lang="ts">
-  import type { PageData } from "./$types";
-
-  export let data: PageData;
+<script>
+  // @ts-nocheck
+  /** @type {import('./$types').PageData} */
+  export let data;
 </script>
 
 <p>{data.pokemon.name}</p>
